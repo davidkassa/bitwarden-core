@@ -1,4 +1,6 @@
 
+image: Visual Studio 2017
+
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
   - SonarQube.Scanner.MSBuild.exe begin /k:"bitwarden-core" /d:"sonar.organization=davidkassa-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%SonarQubeToken%"
