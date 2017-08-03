@@ -1,11 +1,11 @@
 
-# image: Visual Studio 2017
+image: Previous Visual Studio 2017
 
 before_build:
-  - dotnet restore
+  - dotnet restore --verbosity minimal
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
   - SonarQube.Scanner.MSBuild.exe begin /k:"bitwarden-core" /d:"sonar.organization=davidkassa-github" /d:"sonar.host.url=https://sonarcloud.io" /d:"sonar.login=%SonarQubeToken%"
-  - msbuild "bitwarden-core.sln" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild "bitwarden-core.sln" /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
   - SonarQube.Scanner.MSBuild.exe end /d:"sonar.login=%SonarQubeToken%"
 
