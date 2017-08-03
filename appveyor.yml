@@ -2,6 +2,7 @@
 image: Previous Visual Studio 2017
 
 before_build:
+  - dotnet --version
   - dotnet restore --verbosity minimal
 build_script:
   - choco install "msbuild-sonarqube-runner" -y
